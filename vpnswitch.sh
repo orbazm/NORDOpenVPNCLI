@@ -16,8 +16,6 @@ IFS=$'\n'; files=($(printf '%s\n' "${files[@]}" |grep $partial))
 IFS=$'\n' files=($(sort -r -k3 -t':' -n <<<"${files[*]}"))
 unset IFS
 
-echo "${array[0]}"
-
 shopt -s extglob
 
 string="@(${files[0]}"
@@ -35,16 +33,11 @@ case $file in
 $string)
 rm $VPNCONF
 
-echo "$partial"
-
 partial=${file%.nord*}
-echo "$partial"
 
 files=( $CONFDIR/$partial*.ovpn )
-echo "${files[0]}"
 
 file=${files[0]}
-echo "$file"
 
 sed 's/auth-user-pass/auth-user-pass \/usr\/local\/etc\/openvpn\/ovpnauth/g' $file >$VPNDIR/client.conf
 osascript -e  "do shell script \"sudo launchctl stop homebrew.mxcl.openvpn >/dev/null;\" with administrator privileges"
