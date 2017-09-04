@@ -2,6 +2,7 @@
 Cli selection menu for NORDVPN using openvpn
 
 Quick and dirty bash script to swap openvpn configs with nord config files.
+Must have credentials saved to file for openvpn to read to; default NORDVpn config files use interactive auth.
 
 Script does the following actions:
   -Pull server stats from NORD API
@@ -13,5 +14,3 @@ Script does the following actions:
   -restarts openvpn (launchctl)
 
 Works on osx 10.12.6 w/ openvpn 2.4.3
-  
-  
